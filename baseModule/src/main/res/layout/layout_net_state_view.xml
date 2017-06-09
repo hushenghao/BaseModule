@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge>
+
+    <com.che300.basemodule.view.NetStateView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/net_state_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:layout_empty="@layout/layout_empty"
+        app:layout_error="@layout/layout_error"
+        app:layout_loading="@layout/layout_loading">
+
+    </com.che300.basemodule.view.NetStateView>
+</merge>
