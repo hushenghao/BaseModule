@@ -12,6 +12,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.che300.basemodule.R;
@@ -84,7 +85,7 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        showViewByState(SUCCESS_STATE);//默认成功视图，隐藏状态
+        showViewByState(viewState);//默认成功视图，隐藏状态
     }
 
     @Override
@@ -105,10 +106,9 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
         return super.onTouchEvent(event);
     }
 
-    private boolean inflateTag = false;//是否是刚刚inflate过
+    private boolean addViewTag = false;//是否是刚刚inflate过
 
     private View inflateView(@LayoutRes int layoutId) {
-        inflateTag = true;
         return LayoutInflater.from(context).inflate(layoutId, null, true);
     }
 
@@ -121,9 +121,10 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
      */
     private void showViewByState(@ViewState int state) {
         Log.d("showViewByState", "StateChange  " + state);
-        if (viewState == state && !inflateTag) {
+        if (viewState == state && !addViewTag) {
             return;
         }
+        addViewTag = false;
         viewState = state;
         setVisibility(state == SUCCESS_STATE ? GONE : VISIBLE);//成功时隐藏自身
 
@@ -169,6 +170,12 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
         }
     }
 
+    @Override
+    public void addView(View child, int index, ViewGroup.LayoutParams params) {
+        super.addView(child, index, params);
+        addViewTag = true;//添加标记，调整视图显示状态
+        showViewByState(viewState);
+    }
 
     private OnRetryClickListener onRetryClickListener;//错误视图点击重试监听
 
@@ -280,6 +287,7 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
         if (this.emptyView != null)
             removeView(this.emptyView);
         this.emptyView = emptyView;
+
         addView(this.emptyView, params);
         return this;
     }
@@ -288,6 +296,7 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
         if (this.errorView != null)
             removeView(this.errorView);
         this.errorView = errorView;
+
         addView(this.errorView, params);
 
         this.errorView.setClickable(true);
@@ -300,8 +309,10 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
         if (this.loadingView != null)
             removeView(this.loadingView);
         this.loadingView = loadingView;
+
         addView(this.loadingView, params);
 
+        this.loadingView.setClickable(true);
         this.loadingView.setOnKeyListener(this);
         this.loadingView.setOnClickListener(this);
         return this;
@@ -314,9 +325,8 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
     public View getEmptyView() {
         if (emptyView == null) {
             emptyView = inflateView(emptyLayoutId);
-            addView(emptyView, params);
 
-            showViewByState(viewState);
+            addView(emptyView, params);
         }
         return emptyView;
     }
@@ -324,11 +334,11 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
     public View getErrorView() {
         if (errorView == null) {
             errorView = inflateView(errorLayoutId);
+
             errorView.setClickable(true);
             errorView.setOnClickListener(this);
-            addView(errorView, params);
 
-            showViewByState(viewState);
+            addView(errorView, params);
         }
         return errorView;
     }
@@ -336,13 +346,12 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
     public View getLoadingView() {
         if (loadingView == null) {
             loadingView = inflateView(loadingLayoutId);
-            loadingView.setClickable(true);
-            addView(loadingView, params);
 
+            loadingView.setClickable(true);
             loadingView.setOnKeyListener(this);
             loadingView.setOnClickListener(this);
 
-            showViewByState(viewState);
+            addView(loadingView, params);
         }
         return loadingView;
     }

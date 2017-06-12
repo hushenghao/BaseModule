@@ -16,4 +16,20 @@ public abstract class AppActivity extends TitleActivity {
         NetStateView netStateView = new NetStateView(context);
         return netStateView;
     }
+
+    public void showLoading() {
+        netStateView.showLoading();
+    }
+
+    public void hideLoading() {
+        netStateView.hideLoading();
+    }
+
+    public void showError() {
+        netStateView.showError();
+    }
+
+    public void showEmpty() {
+        netStateView.showEmpty();
+    }
 }
