@@ -44,7 +44,7 @@ public abstract class TitleActivity extends BaseActivity {
 
     protected void initTitleBar(Context context, LinearLayout baseView) {
         View header = new View(context);//由于布局延伸到状态栏底部，要在状态栏底部添加占位视图，所以将baseView作为参数传递过来
-        header.setBackgroundColor(ContextCompat.getColor(context, R.color.blue));
+        header.setBackgroundColor(ContextCompat.getColor(context, R.color.title_bg));
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             baseView.addView(header, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                     ScreenUtils.getStatusHeight(context)));
@@ -52,7 +52,7 @@ public abstract class TitleActivity extends BaseActivity {
         }
 
         tabTitleBar = new TabTitleBar(context);
-        tabTitleBar.setBackgroundColor(ContextCompat.getColor(context, R.color.blue));
+        tabTitleBar.setBackgroundColor(ContextCompat.getColor(context, R.color.title_bg));
         tabTitleBar.showLeft();
         tabTitleBar.getLeftButton().setOnClickListener(new View.OnClickListener() {
             @Override
