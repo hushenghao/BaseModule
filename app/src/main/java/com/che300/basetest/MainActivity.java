@@ -43,7 +43,11 @@ public class MainActivity extends TitleActivity {
         errorView.setTextColor(ContextCompat.getColor(context, android.R.color.black));
         ProgressBar progressBar = new ProgressBar(context, null, android.R.attr.progressBarStyleLarge);
         netStateView.setErrorView(errorView)
-                .setOnRetryClickListener(new NetStateView.OnRetryClickListener(netStateView) {
+                .setOnRetryClickListener(new NetStateView.OnRetryClickListener() {
+                    @Override
+                    public void onBlankClick(View errorView) {
+                        showLoading(netStateView.getLoadingView());
+                    }
                 })
                 .setLoadingCancelable(true)
                 .setLoadingView(progressBar)
@@ -63,7 +67,7 @@ public class MainActivity extends TitleActivity {
 
     public void showError(View v) {
         netStateView.showError();
-        handler.sendEmptyMessageDelayed(0, 3000);
+//        handler.sendEmptyMessageDelayed(0, 3000);
     }
 
     public void showEmpty(View v) {

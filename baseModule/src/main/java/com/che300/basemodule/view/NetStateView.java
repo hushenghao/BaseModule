@@ -96,7 +96,7 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
                 return true;
             }
             if (viewState == ERROR_STATE && onRetryClickListener != null) {
-                onRetryClickListener.onBlankClick(errorView, this);
+                onRetryClickListener.onBlankClick(errorView);
                 return true;
             }
         }
@@ -163,7 +163,7 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
     public void onClick(View v) {
         if (v == errorView) {
             if (onRetryClickListener != null) {
-                onRetryClickListener.onErrorViewClick(errorView, this);
+                onRetryClickListener.onErrorViewClick(errorView);
             }
         } else if (v == loadingView) {
             //不作处理，只是为了点击外界关闭加载中视图，见onTouchEvent(event)
@@ -181,34 +181,24 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
 
     public abstract static class OnRetryClickListener {
 
-        private NetStateView netStateView;
-
-        public OnRetryClickListener(NetStateView netStateView) {
-            this.netStateView = netStateView;
-        }
-
         /**
          * 点击错误视图的回调方法
          *
          * @param errorView    错误视图
-         * @param netStateView 网络状态视图
          * @author hsh
          * @time 2017/6/12 012 上午 09:43
          */
-        public void onErrorViewClick(View errorView, NetStateView netStateView) {
-            netStateView.showLoading();
+        public void onErrorViewClick(View errorView) {
         }
 
         /**
          * 点击错误视图空白处的回调
          *
          * @param errorView    错误视图
-         * @param netStateView 网络状态视图
          * @author hsh
          * @time 2017/6/12 012 上午 09:44
          */
-        public void onBlankClick(View errorView, NetStateView netStateView) {
-            netStateView.showLoading();
+        public void onBlankClick(View errorView) {
         }
     }
 

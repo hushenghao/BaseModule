@@ -48,18 +48,19 @@ public class Test2Activity extends AppActivity {
         text.setTextColor(ContextCompat.getColor(context, android.R.color.black));
         loadingView.addView(text, params);
 
-        NetStateView netStateView = super.onCreateNetStateView(context)
+        final NetStateView netStateView = super.onCreateNetStateView(context)
                 .setLoadingView(loadingView)
                 .setLoadingCancelable(true);
-        netStateView.setOnRetryClickListener(new NetStateView.OnRetryClickListener(netStateView) {
+        netStateView.setOnRetryClickListener(new NetStateView.OnRetryClickListener() {
             @Override
-            public void onErrorViewClick(View errorView, NetStateView netStateView) {
+            public void onErrorViewClick(View errorView) {
                 showLoading(netStateView.getLoadingView());
             }
         });
         return netStateView;
     }
 
+    //onClickEvent
     public void showLoading(View v) {
         showLoading();
     }
