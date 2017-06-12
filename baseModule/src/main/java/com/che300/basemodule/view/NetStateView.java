@@ -95,7 +95,7 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
                 return true;
             }
             if (viewState == ERROR_STATE && onRetryClickListener != null) {
-                onRetryClickListener.onBlankClick(errorView);
+                onRetryClickListener.onBlankClick(errorView, this);
                 return true;
             }
         }
@@ -162,7 +162,7 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
     public void onClick(View v) {
         if (v == errorView) {
             if (onRetryClickListener != null) {
-                onRetryClickListener.onErrorViewClick(errorView);
+                onRetryClickListener.onErrorViewClick(errorView, this);
             }
         } else if (v == loadingView) {
             //不作处理，只是为了点击外界关闭加载中视图，见onTouchEvent(event)
@@ -173,24 +173,35 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
     private OnRetryClickListener onRetryClickListener;//错误视图点击重试监听
 
     public abstract static class OnRetryClickListener {
+
+        private NetStateView netStateView;
+
+        public OnRetryClickListener(NetStateView netStateView) {
+            this.netStateView = netStateView;
+        }
+
         /**
          * 点击错误视图的回调方法
          *
-         * @param errorView 错误视图
+         * @param errorView    错误视图
+         * @param netStateView 网络状态视图
          * @author hsh
          * @time 2017/6/12 012 上午 09:43
          */
-        public void onErrorViewClick(View errorView) {
+        public void onErrorViewClick(View errorView, NetStateView netStateView) {
+            netStateView.showLoading();
         }
 
         /**
          * 点击错误视图空白处的回调
          *
-         * @param errorView 错误视图
+         * @param errorView    错误视图
+         * @param netStateView 网络状态视图
          * @author hsh
          * @time 2017/6/12 012 上午 09:44
          */
-        public void onBlankClick(View errorView) {
+        public void onBlankClick(View errorView, NetStateView netStateView) {
+            netStateView.showLoading();
         }
     }
 
@@ -200,13 +211,15 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
 
     /**
      * 设置错误视图点击重试监听
+     * 如果需要自定义错误视图，此方法必须在setErrorView()后调用
      *
      * @param onRetryClickListener
      * @author hsh
      * @time 2017/6/8 008 下午 05:27
      */
-    public void setOnRetryClickListener(OnRetryClickListener onRetryClickListener) {
+    public NetStateView setOnRetryClickListener(OnRetryClickListener onRetryClickListener) {
         this.onRetryClickListener = onRetryClickListener;
+        return this;
     }
 
     /**
@@ -216,8 +229,9 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
      * @author hsh
      * @time 2017/6/9 009 下午 01:39
      */
-    public void setDispatchEvent(boolean dispatchEvent) {
+    public NetStateView setDispatchEvent(boolean dispatchEvent) {
         this.dispatchEvent = dispatchEvent;
+        return this;
     }
 
     /**
@@ -227,8 +241,9 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
      * @author hsh
      * @time 2017/6/9 009 下午 01:40
      */
-    public void setLoadingCancelable(boolean cancelable) {
+    public NetStateView setLoadingCancelable(boolean cancelable) {
         this.cancelable = cancelable;
+        return this;
     }
 
     /**
@@ -243,29 +258,33 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
         return viewState;
     }
 
-    public void setEmptyView(@LayoutRes int emptyId) {
+    public NetStateView setEmptyView(@LayoutRes int emptyId) {
         this.emptyLayoutId = emptyId;
         setEmptyView(inflateView(emptyId));
+        return this;
     }
 
-    public void setErrorView(@LayoutRes int errorId) {
+    public NetStateView setErrorView(@LayoutRes int errorId) {
         this.errorLayoutId = errorId;
         setErrorView(inflateView(errorId));
+        return this;
     }
 
-    public void setLoadingView(@LayoutRes int loadingId) {
+    public NetStateView setLoadingView(@LayoutRes int loadingId) {
         this.loadingLayoutId = loadingId;
         setLoadingView(inflateView(loadingId));
+        return this;
     }
 
-    public void setEmptyView(@NonNull View emptyView) {
+    public NetStateView setEmptyView(@NonNull View emptyView) {
         if (this.emptyView != null)
             removeView(this.emptyView);
         this.emptyView = emptyView;
         addView(this.emptyView, params);
+        return this;
     }
 
-    public void setErrorView(@NonNull View errorView) {
+    public NetStateView setErrorView(@NonNull View errorView) {
         if (this.errorView != null)
             removeView(this.errorView);
         this.errorView = errorView;
@@ -273,10 +292,11 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
 
         this.errorView.setClickable(true);
         this.errorView.setOnClickListener(this);
+        return this;
     }
 
 
-    public void setLoadingView(@NonNull View loadingView) {
+    public NetStateView setLoadingView(@NonNull View loadingView) {
         if (this.loadingView != null)
             removeView(this.loadingView);
         this.loadingView = loadingView;
@@ -284,6 +304,7 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
 
         this.loadingView.setOnKeyListener(this);
         this.loadingView.setOnClickListener(this);
+        return this;
     }
 
     ///////////////////////////////////////////////////////////////////////////

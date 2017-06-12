@@ -41,20 +41,13 @@ public class MainActivity extends TitleActivity {
         TextView errorView = new TextView(this);
         errorView.setText("点击空白处重试");
         errorView.setTextColor(ContextCompat.getColor(context, android.R.color.black));
-        netStateView.setErrorView(errorView);
-
-        netStateView.setOnRetryClickListener(new NetStateView.OnRetryClickListener() {
-            @Override
-            public void onBlankClick(View errorView) {
-                showLoading(netStateView.getLoadingView());
-            }
-        });
-        netStateView.setLoadingCancelable(true);
-
         ProgressBar progressBar = new ProgressBar(context, null, android.R.attr.progressBarStyleLarge);
-        netStateView.setLoadingView(progressBar);
-
-        netStateView.showLoading();
+        netStateView.setErrorView(errorView)
+                .setOnRetryClickListener(new NetStateView.OnRetryClickListener(netStateView) {
+                })
+                .setLoadingCancelable(true)
+                .setLoadingView(progressBar)
+                .showLoading();
     }
 
     public void showLoading(View v) {

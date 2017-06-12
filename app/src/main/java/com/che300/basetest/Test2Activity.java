@@ -26,13 +26,13 @@ public class Test2Activity extends AppActivity {
     @Override
     protected void initView(Bundle savedInstanceState) {
         tabTitleBar.setTitle(getClass().getSimpleName());
-        netStateView.setOnRetryClickListener(new NetStateView.OnRetryClickListener() {
+        netStateView.setOnRetryClickListener(new NetStateView.OnRetryClickListener(netStateView) {
             @Override
-            public void onErrorViewClick(View v) {
-                showLoading(v);
+            public void onErrorViewClick(View errorView, NetStateView netStateView) {
+                showLoading(netStateView.getLoadingView());
             }
-        });
-        netStateView.setLoadingCancelable(true);
+        })
+                .setLoadingCancelable(true);
     }
 
     public void showLoading(View v) {
@@ -46,7 +46,7 @@ public class Test2Activity extends AppActivity {
 
     public void showError(View v) {
         netStateView.showError();
-        handler.sendEmptyMessageDelayed(0, 3000);
+//        handler.sendEmptyMessageDelayed(0, 3000);
     }
 
     public void showEmpty(View v) {
