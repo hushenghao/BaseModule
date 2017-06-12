@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.che300.basemodule.base.activity.TitleActivity;
 import com.che300.basemodule.view.NetStateView;
@@ -36,15 +38,20 @@ public class MainActivity extends TitleActivity {
     protected void initView(Bundle savedInstanceState) {
         tabTitleBar.setTitle(getClass().getSimpleName());
 
+        TextView errorView = new TextView(this);
+        errorView.setText("点击空白处重试");
+        errorView.setTextColor(ContextCompat.getColor(context, android.R.color.black));
+        netStateView.setErrorView(errorView);
+
         netStateView.setOnRetryClickListener(new NetStateView.OnRetryClickListener() {
             @Override
-            public void OnRefreshClick(View v) {
-                showLoading(v);
+            public void onBlankClick(View errorView) {
+                showLoading(netStateView.getLoadingView());
             }
         });
         netStateView.setLoadingCancelable(true);
 
-        ProgressBar progressBar = new ProgressBar(context,null, android.R.attr.progressBarStyleLarge);
+        ProgressBar progressBar = new ProgressBar(context, null, android.R.attr.progressBarStyleLarge);
         netStateView.setLoadingView(progressBar);
 
         netStateView.showLoading();

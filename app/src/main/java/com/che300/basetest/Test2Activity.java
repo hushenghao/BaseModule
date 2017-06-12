@@ -28,7 +28,7 @@ public class Test2Activity extends AppActivity {
         tabTitleBar.setTitle(getClass().getSimpleName());
         netStateView.setOnRetryClickListener(new NetStateView.OnRetryClickListener() {
             @Override
-            public void OnRefreshClick(View v) {
+            public void onErrorViewClick(View v) {
                 showLoading(v);
             }
         });
