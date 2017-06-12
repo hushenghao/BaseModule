@@ -126,7 +126,9 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
         }
         addViewTag = false;
         viewState = state;
-        setVisibility(state == SUCCESS_STATE ? GONE : VISIBLE);//成功时隐藏自身
+        setVisibility(viewState == SUCCESS_STATE ? GONE : VISIBLE);//成功时隐藏自身
+        if (viewState == SUCCESS_STATE)
+            return;
 
         if (emptyView != null) {
             emptyView.setVisibility(viewState == EMPTY_STATE ? VISIBLE : GONE);
@@ -184,7 +186,7 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
         /**
          * 点击错误视图的回调方法
          *
-         * @param errorView    错误视图
+         * @param errorView 错误视图
          * @author hsh
          * @time 2017/6/12 012 上午 09:43
          */
@@ -194,7 +196,7 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
         /**
          * 点击错误视图空白处的回调
          *
-         * @param errorView    错误视图
+         * @param errorView 错误视图
          * @author hsh
          * @time 2017/6/12 012 上午 09:44
          */
