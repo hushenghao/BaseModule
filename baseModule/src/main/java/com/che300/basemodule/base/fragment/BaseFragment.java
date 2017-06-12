@@ -198,7 +198,8 @@ public abstract class BaseFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         Log.d(BASE_TAG, "onDestroyView: " + className);
-        unbinder.unbind();
+        if (unbinder != null)
+            unbinder.unbind();
     }
 
     @Override

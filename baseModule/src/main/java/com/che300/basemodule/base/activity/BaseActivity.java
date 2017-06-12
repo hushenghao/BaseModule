@@ -39,7 +39,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public View contentView;//content
 
-    public NetStateView netStateView;//网络状态视图
+    public NetStateView netStateView;//网络状态视图，如果未在布局文件中引入，或者未重写onCreateNetStateView()，则为null
 
     @NonNull
     public void toast(@NonNull String msg) {
@@ -133,6 +133,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
             baseView.addView(rootView, rootParams);
 
+            onBaseViewCreate();
+
             setContentView(baseView);
 
             return;
@@ -143,7 +145,18 @@ public abstract class BaseActivity extends AppCompatActivity {
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
         baseView.addView(contentView, contentParams);
 
+        onBaseViewCreate();
+
         setContentView(baseView);
+    }
+
+    /**
+     * BaseView创建完成时调用，在setContentView之前调用
+     *
+     * @author hsh
+     * @time 2017/6/12 012 上午 11:16
+     */
+    protected void onBaseViewCreate() {
     }
 
     /**

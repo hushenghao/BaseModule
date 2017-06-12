@@ -1,7 +1,6 @@
 package com.che300.basetest;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -17,9 +16,6 @@ public class Test1Activity extends AppActivity {
 
     @BindView(R.id.list_view)
     ListView listView;
-
-    boolean isFirst = true;
-    Handler handler = new Handler();
 
     @Override
     protected int getLayoutId() {
@@ -39,29 +35,6 @@ public class Test1Activity extends AppActivity {
         netStateView.setLoadingCancelable(true);
         netStateView.showLoading();
     }
-
-//    @Override
-//    public void initData() {
-//        netStateView.showLoading();//加载中视图
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                if (isFirst) {
-//                    isFirst = false;
-//                    netStateView.showError();//错误视图
-//                } else {
-//                    netStateView.showEmpty();//空视图
-//                    handler.postDelayed(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            netStateView.hideLoading();
-//                            bindData();//成功视图
-//                        }
-//                    }, 1000);
-//                }
-//            }
-//        }, 2000);
-//    }
 
     private void bindData() {
         ArrayList<String> data = new ArrayList<>();

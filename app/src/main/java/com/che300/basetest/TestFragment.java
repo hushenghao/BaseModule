@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.che300.basemodule.base.fragment.BaseFragment;
+import com.che300.basemodule.base.fragment.AppFragment;
 import com.che300.basemodule.view.NetStateView;
 
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ import butterknife.BindView;
  * @time 2017/6/7 007 下午 05:05.
  * @doc
  */
-public class TestFragment extends BaseFragment {
+public class TestFragment extends AppFragment {
 
     @BindView(R.id.list_view)
     ListView listView;
@@ -33,7 +33,6 @@ public class TestFragment extends BaseFragment {
 
     @Override
     protected void initView(View rootView) {
-//        bindData();
     }
 
     @Override
