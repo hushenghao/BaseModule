@@ -86,7 +86,7 @@ public class MainActivity extends TitleActivity {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        Log.e(BASE_TAG, "onKeyDown: Activity的按键监听回调");
+        Log.e(TAG, "onKeyDown: Activity的按键监听回调");
         return super.onKeyDown(keyCode, event);
     }
 }

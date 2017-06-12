@@ -26,7 +26,10 @@ import butterknife.ButterKnife;
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
+    public final String TAG = getClass().getSimpleName();
+
     public final static String BASE_TAG = "ActivityLife";
+
     private String className = getClass().getName();
 
 
@@ -85,7 +88,6 @@ public abstract class BaseActivity extends AppCompatActivity {
      *
      * @author hsh
      * @time 2017/6/7 007 下午 03:22
-     * @version 1.7.
      */
     protected abstract void initStatusBar();
 
@@ -164,7 +166,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 如果不需要或者已在布局文件中已经引入NetStateView，则不用重写该方法
      *
      * @param context
-     * @return
+     * @return NetStateView
      * @author hsh
      * @time 2017/6/8 008 上午 11:03
      */

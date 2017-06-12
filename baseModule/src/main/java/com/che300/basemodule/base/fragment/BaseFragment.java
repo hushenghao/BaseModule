@@ -27,7 +27,10 @@ import butterknife.Unbinder;
  */
 public abstract class BaseFragment extends Fragment {
 
+    public final String TAG = getClass().getSimpleName();
+
     public final static String BASE_TAG = "FragmentLife";
+
     private String className = getClass().getName();
 
 
