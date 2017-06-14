@@ -25,6 +25,7 @@ import static android.view.WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN;
 public abstract class TitleActivity extends BaseActivity {
 
     public TabTitleBar tabTitleBar;//title
+    private View header;
 
     /**
      * 初始化状态栏
@@ -43,7 +44,8 @@ public abstract class TitleActivity extends BaseActivity {
     }
 
     protected void initTitleBar(Context context, LinearLayout baseView) {
-        View header = new View(context);//由于布局延伸到状态栏底部，要在状态栏底部添加占位视图，所以将baseView作为参数传递过来
+        //由于布局延伸到状态栏底部，要在状态栏底部添加占位视图，所以将baseView作为参数传递过来
+        header = new View(context);
         header.setBackgroundColor(ContextCompat.getColor(context, R.color.title_bg));
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             baseView.addView(header, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
@@ -63,6 +65,16 @@ public abstract class TitleActivity extends BaseActivity {
         LinearLayout.LayoutParams titleParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 DensityUtils.dp2px(this.context, 50));
         baseView.addView(tabTitleBar, titleParams);
+    }
+
+    protected void hideTitle() {
+        tabTitleBar.setVisibility(View.GONE);
+        header.setVisibility(View.GONE);
+    }
+
+    protected void showTitle() {
+        tabTitleBar.setVisibility(View.VISIBLE);
+        header.setVisibility(View.VISIBLE);
     }
 
 }

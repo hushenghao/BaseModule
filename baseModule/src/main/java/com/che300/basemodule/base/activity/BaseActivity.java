@@ -38,7 +38,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected LayoutInflater layoutInflater;
 
 
-    private LinearLayout baseView;//根布局，包括title
+    protected LinearLayout baseView;//根布局，包括title
 
     public View contentView;//content
 
@@ -100,6 +100,12 @@ public abstract class BaseActivity extends AppCompatActivity {
      * @time 2017/6/7 007 下午 03:24
      */
     protected abstract void initTitleBar(Context context, @Nullable LinearLayout baseView);
+
+    protected void hideTitle() {
+    }
+
+    protected void showTitle() {
+    }
 
 
     private void initBaseView() {

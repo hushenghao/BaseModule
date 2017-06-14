@@ -75,6 +75,14 @@ public class MainActivity extends TitleActivity {
         handler.sendEmptyMessageDelayed(0, 3000);
     }
 
+    public void hideTitle(View v) {
+        hideTitle();
+    }
+
+    public void showTitle(View v) {
+        showTitle();
+    }
+
     public void goToFragmentActivity(View v) {
         startActivity(new Intent(this, FragmentActivity.class));
     }
