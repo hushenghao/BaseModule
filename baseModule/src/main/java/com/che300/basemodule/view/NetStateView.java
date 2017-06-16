@@ -52,6 +52,7 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
 
     private boolean cancelable = false;//loading视图是否可以返回隐藏
     private boolean dispatchEvent = true;//触摸事件是否可以传递到下层成功视图
+    //setFilterTouchesWhenObscured(true);//也可以使用此api实现
 
     @ViewState
     private int viewState = SUCCESS_STATE;
@@ -90,17 +91,21 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_UP) {
-            if (viewState == LOADING_STATE && cancelable) {//点击进度条外自动关闭
-                hideLoading();
-                return true;
-            }
-            if (viewState == ERROR_STATE && onRetryClickListener != null) {
-                onRetryClickListener.onBlankClick(errorView);
-                return true;
-            }
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                if (viewState == LOADING_STATE && cancelable) {//点击进度条外自动关闭
+                    hideLoading();
+                    return true;
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+                if (viewState == ERROR_STATE && onRetryClickListener != null) {//错误视图点击回调
+                    onRetryClickListener.onBlankClick(errorView);
+                    return true;
+                }
+                break;
         }
-        if (viewState != SUCCESS_STATE && dispatchEvent) {//视图显示时拦截事件
+        if (viewState != SUCCESS_STATE && dispatchEvent) {//视图显示时消费事件
             return true;
         }
         return super.onTouchEvent(event);
