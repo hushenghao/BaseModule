@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.support.annotation.IntDef;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
+import android.support.annotation.StringRes;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;
@@ -99,14 +100,14 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
                 throw new IllegalArgumentException("NetStateView的子View必须设置tag android:tag=@string/loading_view");
             }
             String tagStr = (String) tag;
-            if (tagStr.equals(context.getResources().getString(R.string.empty_view))) {
+            if (tagStr.equals(getString(R.string.empty_view))) {
                 this.emptyView = childView;
-            } else if (tagStr.equals(context.getResources().getString(R.string.loading_view))) {
+            } else if (tagStr.equals(getString(R.string.loading_view))) {
                 this.loadingView = childView;
                 this.loadingView.setClickable(true);
                 this.loadingView.setOnKeyListener(this);
                 this.loadingView.setOnClickListener(this);
-            } else if (tagStr.equals(context.getResources().getString(R.string.error_view))) {
+            } else if (tagStr.equals(getString(R.string.error_view))) {
                 this.errorView = childView;
                 this.errorView.setClickable(true);
                 this.errorView.setOnClickListener(this);
@@ -118,6 +119,10 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
             }
         }
         showViewByState(viewState);//默认成功视图，隐藏状态
+    }
+
+    private String getString(@StringRes int stringId) {
+        return context.getResources().getString(stringId);
     }
 
     @Override

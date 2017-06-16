@@ -67,16 +67,14 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:onClick="goToFragmentActivity"
             android:text="FragmentActivity"/>
-
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="gotoChildViewActivity"
-            android:text="gotoChildViewActivity"/>
+            android:text="ChildViewActivity"/>
     </LinearLayout>
 
     <include layout="@layout/layout_net_state_view"/>

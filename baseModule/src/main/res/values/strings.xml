@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">BaseModule</string>
 
-    <string name="loading_view">loadingView</string>
-    <string name="error_view">errorView</string>
-    <string name="empty_view">emptyView</string>
+    <!--NetStateView子view添加tag时用到的字符串，用于区分不同的视图-->
+    <string name="loading_view">1</string>
+    <string name="error_view">2</string>
+    <string name="empty_view">3</string>
 </resources>
