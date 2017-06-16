@@ -27,18 +27,21 @@ import java.lang.annotation.RetentionPolicy;
  */
 public class NetStateView extends FrameLayout implements View.OnClickListener, View.OnKeyListener {
 
-    private static final String TAG = "NetStateView";
+    private final String TAG = getClass().getSimpleName();
 
     public static final int ERROR_STATE = -1;//错误视图
     public static final int EMPTY_STATE = 0;//空视图
     public static final int LOADING_STATE = 2;//加载中视图
     public static final int SUCCESS_STATE = 1;//成功视图，隐藏自身
 
+    private final String emptyViewTag;
+    private final String loadingViewTag;
+    private final String errorViewTag;
+
     @IntDef({ERROR_STATE, EMPTY_STATE, LOADING_STATE, SUCCESS_STATE})
     @Retention(RetentionPolicy.SOURCE)
     public @interface ViewState {
     }
-
 
     private Context context;
 
@@ -80,6 +83,10 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
 
         typedArray.recycle();
 
+        emptyViewTag = getString(R.string.empty_view);
+        loadingViewTag = getString(R.string.loading_view);
+        errorViewTag = getString(R.string.error_view);
+
         childViewParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         childViewParams.gravity = Gravity.CENTER;
     }
@@ -99,11 +106,11 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
                         "android:tag=@string/loading_view ...");
             }
             String tagStr = (String) tag;
-            if (tagStr.equals(getString(R.string.empty_view))) {
+            if (tagStr.equals(emptyViewTag)) {
                 setEmptyView(childView, false);
-            } else if (tagStr.equals(getString(R.string.loading_view))) {
+            } else if (tagStr.equals(loadingViewTag)) {
                 setLoadingView(childView, false);
-            } else if (tagStr.equals(getString(R.string.error_view))) {
+            } else if (tagStr.equals(errorViewTag)) {
                 setErrorView(childView, false);
             } else {
                 throw new IllegalArgumentException("NetStateView子View的tag必须为\n" +
