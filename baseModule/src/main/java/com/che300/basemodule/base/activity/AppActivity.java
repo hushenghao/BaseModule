@@ -9,6 +9,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.che300.basemodule.view.NetStateView;
+import com.che300.basemodule.view.NetStateViewBuilder;
 
 /**
  * @author hsh
@@ -31,16 +32,16 @@ public abstract class AppActivity extends TitleActivity {
         loadingText.setText("加载中...");
         loadingView.addView(loadingText, params);
 
-        final NetStateView netStateView = new NetStateView(context)
-                .setLoadingView(loadingView)
-                .setLoadingCancelable(true)
+        return new NetStateViewBuilder(context)
                 .setOnRetryClickListener(new NetStateView.OnRetryClickListener() {
                     @Override
                     public void onErrorViewClick(View errorView) {
                         showLoading();
                     }
-                });
-        return netStateView;
+                })
+                .setLoadingView(loadingView)
+                .setLoadingCancelable(true)
+                .build();
     }
 
     public void showLoading() {
