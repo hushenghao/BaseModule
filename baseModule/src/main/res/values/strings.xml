@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">BaseModule</string>
+
+    <string name="loading_view">loadingView</string>
+    <string name="error_view">errorView</string>
+    <string name="empty_view">emptyView</string>
 </resources>

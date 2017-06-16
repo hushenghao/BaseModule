@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="showLoading"
+            android:text="loading"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="showSuccess"
+            android:text="success"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="showError"
+            android:text="error"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:onClick="showEmpty"
+            android:text="empty"/>
+    </LinearLayout>
+
+    <!--
+    NetStateView的不同视图也可以直接在内部添加
+    直接子View个数只能为3或0
+    在布局中必须给不同的视图设置不同的tag
+        错误视图 @string/error_view
+        加载中视图 @string/loading_view
+        空视图 @string/empty_view
+    -->
+
+    <com.che300.basemodule.view.NetStateView
+        android:id="@+id/net_state_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="@string/loading_view"
+            android:text="我是加载中视图"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="@string/empty_view"
+            android:text="我是空视图"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="@string/error_view"
+            android:text="我是错误视图"/>
+
+    </com.che300.basemodule.view.NetStateView>
+
+</FrameLayout>

@@ -54,13 +54,13 @@ public class MainActivity extends TitleActivity {
                 .showLoading();
     }
 
+
+    //onClickEvent
     public void showLoading(View v) {
         netStateView.showLoading();
 //        handler.sendEmptyMessageDelayed(0, 2000);
     }
 
-
-    //onClickEvent
     public void showSuccess(View v) {
         netStateView.showSuccess();
     }
@@ -95,6 +95,9 @@ public class MainActivity extends TitleActivity {
         startActivity(new Intent(this, Test2Activity.class));
     }
 
+    public void gotoChildViewActivity(View v) {
+        startActivity(new Intent(this, ChildViewActivity.class));
+    }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

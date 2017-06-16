@@ -27,6 +27,8 @@ import java.lang.annotation.RetentionPolicy;
  */
 public class NetStateView extends FrameLayout implements View.OnClickListener, View.OnKeyListener {
 
+    private static final String TAG = "NetStateView";
+
     public static final int ERROR_STATE = -1;//错误视图
     public static final int EMPTY_STATE = 0;//空视图
     public static final int LOADING_STATE = 2;//加载中视图
@@ -40,7 +42,7 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
 
     private Context context;
 
-    private FrameLayout.LayoutParams params;
+    private FrameLayout.LayoutParams childViewparams;
 
     private int emptyLayoutId;
     private int errorLayoutId;
@@ -78,14 +80,43 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
 
         typedArray.recycle();
 
-        params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        params.gravity = Gravity.CENTER;
-
+        childViewparams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        childViewparams.gravity = Gravity.CENTER;
     }
 
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
+        int childCount = getChildCount();
+        if (childCount != 3 && childCount != 0) {
+            throw new IllegalStateException("NetStateView的直接子View必须等于3或0");
+        }
+        for (int i = 0; i < childCount; i++) {
+            View childView = getChildAt(i);
+            childView.setLayoutParams(childViewparams);
+            Object tag = childView.getTag();
+            if (tag == null || !(tag instanceof String)) {
+                throw new IllegalArgumentException("NetStateView的子View必须设置tag android:tag=@string/loading_view");
+            }
+            String tagStr = (String) tag;
+            if (tagStr.equals(context.getResources().getString(R.string.empty_view))) {
+                this.emptyView = childView;
+            } else if (tagStr.equals(context.getResources().getString(R.string.loading_view))) {
+                this.loadingView = childView;
+                this.loadingView.setClickable(true);
+                this.loadingView.setOnKeyListener(this);
+                this.loadingView.setOnClickListener(this);
+            } else if (tagStr.equals(context.getResources().getString(R.string.error_view))) {
+                this.errorView = childView;
+                this.errorView.setClickable(true);
+                this.errorView.setOnClickListener(this);
+            } else {
+                throw new IllegalArgumentException("NetStateView子View的tag必须为 " +
+                        "android:tag=@string/loading_view " +
+                        "android:tag=@string/empty_view " +
+                        "android:tag=@string/error_view");
+            }
+        }
         showViewByState(viewState);//默认成功视图，隐藏状态
     }
 
@@ -285,7 +316,7 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
             removeView(this.emptyView);
         this.emptyView = emptyView;
 
-        addView(this.emptyView, params);
+        addView(this.emptyView, childViewparams);
         return this;
     }
 
@@ -294,7 +325,7 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
             removeView(this.errorView);
         this.errorView = errorView;
 
-        addView(this.errorView, params);
+        addView(this.errorView, childViewparams);
 
         this.errorView.setClickable(true);
         this.errorView.setOnClickListener(this);
@@ -307,7 +338,7 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
             removeView(this.loadingView);
         this.loadingView = loadingView;
 
-        addView(this.loadingView, params);
+        addView(this.loadingView, childViewparams);
 
         this.loadingView.setClickable(true);
         this.loadingView.setOnKeyListener(this);
@@ -323,7 +354,7 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
         if (emptyView == null) {
             emptyView = inflateView(emptyLayoutId);
 
-            addView(emptyView, params);
+            addView(emptyView, childViewparams);
         }
         return emptyView;
     }
@@ -335,7 +366,7 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
             errorView.setClickable(true);
             errorView.setOnClickListener(this);
 
-            addView(errorView, params);
+            addView(errorView, childViewparams);
         }
         return errorView;
     }
@@ -348,7 +379,7 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
             loadingView.setOnKeyListener(this);
             loadingView.setOnClickListener(this);
 
-            addView(loadingView, params);
+            addView(loadingView, childViewparams);
         }
         return loadingView;
     }
