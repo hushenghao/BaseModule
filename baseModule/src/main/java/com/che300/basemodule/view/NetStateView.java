@@ -23,7 +23,47 @@ import java.lang.annotation.RetentionPolicy;
 /**
  * @author hsh
  * @time 2017/6/8 008 上午 10:42.
- * @doc 封装了不同视图的View
+ * @doc 封装了不同视图的FrameLayout
+ * <p>
+ * 可以直接在布局中引入
+ * <com.che300.basemodule.view.NetStateView
+ * xmlns:android="http://schemas.android.com/apk/res/android"
+ * xmlns:app="http://schemas.android.com/apk/res-auto"
+ * android:id="@+id/net_state_view"
+ * android:layout_width="match_parent"
+ * android:layout_height="match_parent"
+ * android:visibility="gone"
+ * app:layout_empty="@layout/layout_empty"//空视图
+ * app:layout_error="@layout/layout_error"//错误视图
+ * app:layout_loading="@layout/layout_loading"/>//加载中视图
+ * <p>
+ * <p>
+ * <p>
+ * 可以直接添加子View，子View数量必须为3，且必须设置指定tag
+ * <com.che300.basemodule.view.NetStateView
+ * android:id="@+id/net_state_view"
+ * android:layout_width="match_parent"
+ * android:layout_height="match_parent">
+ * <p>
+ * <TextView
+ * android:layout_width="wrap_content"
+ * android:layout_height="wrap_content"
+ * android:tag="@string/loading_view"
+ * android:text="我是加载中视图"/>
+ * <p>
+ * <TextView
+ * android:layout_width="wrap_content"
+ * android:layout_height="wrap_content"
+ * android:tag="@string/empty_view"
+ * android:text="我是空视图"/>
+ * <p>
+ * <TextView
+ * android:layout_width="wrap_content"
+ * android:layout_height="wrap_content"
+ * android:tag="@string/error_view"
+ * android:text="我是错误视图"/>
+ * <p>
+ * </com.che300.basemodule.view.NetStateView>
  */
 public class NetStateView extends FrameLayout implements View.OnClickListener, View.OnKeyListener {
 
@@ -96,13 +136,13 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
         super.onFinishInflate();
         int childCount = getChildCount();
         if (childCount != 3 && childCount != 0) {
-            throw new IllegalStateException("NetStateView的直接子View必须等于3或0");
+            throw new IllegalStateException("NetStateView的直接子View个数不等于3或0");
         }
         for (int i = 0; i < childCount; i++) {
             View childView = getChildAt(i);
             Object tag = childView.getTag();
             if (tag == null || !(tag instanceof String)) {
-                throw new IllegalArgumentException("NetStateView的子View必须设置tag\n" +
+                throw new IllegalArgumentException("NetStateView的子View没有设置tag，无法区分子View是什么视图\n" +
                         "android:tag=@string/loading_view ...");
             }
             String tagStr = (String) tag;
@@ -122,6 +162,7 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
         showViewByState(viewState);//默认成功视图，隐藏状态
     }
 
+    @NonNull
     private String getString(@StringRes int stringId) {
         return context.getResources().getString(stringId);
     }
