@@ -62,6 +62,7 @@ public class MainActivity extends TitleActivity {
     }
 
     public void showSuccess(View v) {
+        toast("成功视图");
         netStateView.showSuccess();
     }
 

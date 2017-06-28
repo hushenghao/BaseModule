@@ -89,7 +89,8 @@ public abstract class BaseActivity extends AppCompatActivity {
      * @author hsh
      * @time 2017/6/7 007 下午 03:22
      */
-    protected abstract void initStatusBar();
+    protected void initStatusBar(){
+    }
 
     /**
      * 初始化标题栏，需要将标题添加到baseView内
@@ -99,19 +100,12 @@ public abstract class BaseActivity extends AppCompatActivity {
      * @author hsh
      * @time 2017/6/7 007 下午 03:24
      */
-    protected abstract void initTitleBar(Context context, @Nullable LinearLayout baseView);
-
-    protected void hideTitle() {
+    protected void initTitleBar(Context context, @Nullable LinearLayout baseView){
     }
-
-    protected void showTitle() {
-    }
-
 
     private void initBaseView() {
         //最终容器
         baseView = new LinearLayout(context);
-//        baseView.setBackgroundColor(ContextCompat.getColor(context, android.R.color.white));
         baseView.setOrientation(LinearLayout.VERTICAL);
 
         //标题栏
@@ -200,8 +194,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         context = this;
         applicationContext = getApplicationContext();
         layoutInflater = getLayoutInflater();
-
-//        getWindow().setBackgroundDrawableResource(android.R.color.transparent);//去除背景
 
         initStatusBar();
 
