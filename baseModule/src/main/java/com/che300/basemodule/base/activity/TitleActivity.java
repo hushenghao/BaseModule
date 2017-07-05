@@ -6,7 +6,6 @@ import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.LinearLayout;
 
 import com.che300.basemodule.R;
@@ -21,8 +20,17 @@ import com.che300.basemodule.view.TabTitleBar;
 public abstract class TitleActivity extends BaseActivity {
 
     public TabTitleBar tabTitleBar;//title
+//    private View header;
 
     protected void initTitleBar(Context context, LinearLayout baseView) {
+        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);//开启状态栏透明会引起输入框无法弹起
+//            header = new View(context);
+//            header.setBackgroundColor(ContextCompat.getColor(context, R.color.title_bg));
+//            int statusHeight = ScreenUtils.getStatusHeight(context);
+//            baseView.addView(header, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+//                    statusHeight));
+        }
         tabTitleBar = new TabTitleBar(context);
         tabTitleBar.setBackgroundColor(ContextCompat.getColor(context, R.color.title_bg));
         tabTitleBar.showLeft();
@@ -43,7 +51,7 @@ public abstract class TitleActivity extends BaseActivity {
             baseView.setFitsSystemWindows(true);
             getWindow().setStatusBarColor(Color.TRANSPARENT);//透明状态栏
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//            header.setVisibility(View.GONE);
         }
     }
 
@@ -53,7 +61,7 @@ public abstract class TitleActivity extends BaseActivity {
             baseView.setFitsSystemWindows(false);
             getWindow().setStatusBarColor(ContextCompat.getColor(context, R.color.title_bg));
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//            header.setVisibility(View.VISIBLE);
         }
     }
 
