@@ -1,4 +1,4 @@
-package com.che300.basemodule.view;
+package com.dede.basemodule.view;
 
 import android.content.Context;
 import android.support.annotation.LayoutRes;

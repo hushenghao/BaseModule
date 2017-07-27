@@ -1,4 +1,4 @@
-package com.che300.basetest;
+package com.dede.basetest;
 
 import android.os.Bundle;
 import android.view.View;
@@ -6,7 +6,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.che300.basemodule.base.activity.AppActivity;
+import com.dede.basemodule.base.activity.AppActivity;
 
 import java.util.ArrayList;
 

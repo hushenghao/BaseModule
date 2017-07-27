@@ -1,4 +1,4 @@
-package com.che300.basemodule.base.activity;
+package com.dede.basemodule.base.activity;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -15,7 +15,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.che300.basemodule.view.NetStateView;
+import com.dede.basemodule.view.NetStateView;
 
 import butterknife.ButterKnife;
 

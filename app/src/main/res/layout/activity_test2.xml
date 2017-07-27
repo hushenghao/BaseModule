@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="bottom|center_horizontal"
     android:orientation="vertical"
-    tools:context="com.che300.basetest.Test2Activity">
+    tools:context="com.dede.basetest.Test2Activity">
 
     <Button
         android:layout_width="wrap_content"

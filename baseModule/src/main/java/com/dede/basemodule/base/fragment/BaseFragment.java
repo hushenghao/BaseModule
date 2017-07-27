@@ -1,4 +1,4 @@
-package com.che300.basemodule.base.fragment;
+package com.dede.basemodule.base.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
-import com.che300.basemodule.view.NetStateView;
+import com.dede.basemodule.view.NetStateView;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;

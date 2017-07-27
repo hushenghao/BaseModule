@@ -1,11 +1,11 @@
-package com.che300.basetest;
+package com.dede.basetest;
 
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 
-import com.che300.basemodule.base.activity.AppActivity;
+import com.dede.basemodule.base.activity.AppActivity;
 
 public class Test2Activity extends AppActivity {
 

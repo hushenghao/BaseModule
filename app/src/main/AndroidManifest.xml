@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.che300.basetest">
+          package="com.dede.basetest">
 
     <application
         android:allowBackup="true"
@@ -9,15 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Test1Activity">
+        <activity android:name="com.dede.basetest.Test1Activity">
         </activity>
-        <activity android:name=".Test2Activity">
+        <activity android:name="com.dede.basetest.Test2Activity">
         </activity>
-        <activity android:name=".FragmentActivity">
+        <activity android:name="com.dede.basetest.FragmentActivity">
         </activity>
-        <activity android:name=".ChildViewActivity">
+        <activity android:name="com.dede.basetest.ChildViewActivity">
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name="com.dede.basetest.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

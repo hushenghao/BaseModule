@@ -1,4 +1,4 @@
-package com.che300.basemodule.util;
+package com.dede.basemodule.util;
 
 import android.content.Context;
 import android.util.TypedValue;

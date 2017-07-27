@@ -1,4 +1,4 @@
-package com.che300.basemodule.view;
+package com.dede.basemodule.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -15,7 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-import com.che300.basemodule.R;
+import com.dede.basemodule.R;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

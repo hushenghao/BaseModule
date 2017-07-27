@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge>
 
-    <com.che300.basemodule.view.NetStateView
+    <com.dede.basemodule.view.NetStateView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/net_state_view"
@@ -12,5 +12,5 @@
         app:layout_error="@layout/layout_error"
         app:layout_loading="@layout/layout_loading">
 
-    </com.che300.basemodule.view.NetStateView>
+    </com.dede.basemodule.view.NetStateView>
 </merge>

@@ -1,4 +1,4 @@
-package com.che300.basemodule.base.activity;
+package com.dede.basemodule.base.activity;
 
 import android.content.Context;
 import android.view.Gravity;
@@ -8,8 +8,8 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.che300.basemodule.view.NetStateView;
-import com.che300.basemodule.view.NetStateViewBuilder;
+import com.dede.basemodule.view.NetStateView;
+import com.dede.basemodule.view.NetStateViewBuilder;
 
 /**
  * @author hsh

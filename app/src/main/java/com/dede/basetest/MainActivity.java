@@ -1,4 +1,4 @@
-package com.che300.basetest;
+package com.dede.basetest;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,8 +11,8 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.che300.basemodule.base.activity.TitleActivity;
-import com.che300.basemodule.view.NetStateView;
+import com.dede.basemodule.base.activity.TitleActivity;
+import com.dede.basemodule.view.NetStateView;
 
 import butterknife.BindView;
 

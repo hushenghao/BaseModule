@@ -1,4 +1,4 @@
-package com.che300.basetest;
+package com.dede.basetest;
 
 import org.junit.Test;
 

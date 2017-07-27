@@ -1,8 +1,8 @@
-package com.che300.basemodule.base.fragment;
+package com.dede.basemodule.base.fragment;
 
 import android.content.Context;
 
-import com.che300.basemodule.view.NetStateView;
+import com.dede.basemodule.view.NetStateView;
 
 /**
  * @author hsh

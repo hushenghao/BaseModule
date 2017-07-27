@@ -1,4 +1,4 @@
-package com.che300.basemodule.base.activity;
+package com.dede.basemodule.base.activity;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -8,9 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.che300.basemodule.R;
-import com.che300.basemodule.util.DensityUtils;
-import com.che300.basemodule.view.TabTitleBar;
+import com.dede.basemodule.R;
+import com.dede.basemodule.util.DensityUtils;
+import com.dede.basemodule.view.TabTitleBar;
 
 /**
  * @author hsh

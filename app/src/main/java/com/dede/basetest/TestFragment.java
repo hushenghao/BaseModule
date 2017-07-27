@@ -1,4 +1,4 @@
-package com.che300.basetest;
+package com.dede.basetest;
 
 import android.content.Context;
 import android.os.Handler;
@@ -6,8 +6,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.che300.basemodule.base.fragment.AppFragment;
-import com.che300.basemodule.view.NetStateView;
+import com.dede.basemodule.base.fragment.AppFragment;
+import com.dede.basemodule.view.NetStateView;
 
 import java.util.ArrayList;
 

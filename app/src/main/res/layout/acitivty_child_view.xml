@@ -44,7 +44,7 @@
         空视图 @string/empty_view
     -->
 
-    <com.che300.basemodule.view.NetStateView
+    <com.dede.basemodule.view.NetStateView
         android:id="@+id/net_state_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -67,6 +67,6 @@
             android:tag="@string/error_view"
             android:text="我是错误视图"/>
 
-    </com.che300.basemodule.view.NetStateView>
+    </com.dede.basemodule.view.NetStateView>
 
 </FrameLayout>

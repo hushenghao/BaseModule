@@ -1,4 +1,4 @@
-package com.che300.basemodule.view;
+package com.dede.basemodule.view;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -9,8 +9,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.che300.basemodule.R;
-import com.che300.basemodule.util.DensityUtils;
+import com.dede.basemodule.R;
+import com.dede.basemodule.util.DensityUtils;
 
 /**
  * @author gengqiqauan
