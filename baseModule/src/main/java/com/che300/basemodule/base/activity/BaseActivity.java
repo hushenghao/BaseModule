@@ -44,12 +44,10 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public NetStateView netStateView;//网络状态视图，如果未在布局文件中引入，或者未重写onCreateNetStateView()，则为null
 
-    @NonNull
     public void toast(@NonNull String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
-    @NonNull
     public void toast(@StringRes int res) {
         toast(getResources().getString(res));
     }

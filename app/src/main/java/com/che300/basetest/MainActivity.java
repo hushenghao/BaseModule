@@ -40,6 +40,7 @@ public class MainActivity extends TitleActivity {
 
         TextView errorView = new TextView(this);
         errorView.setText("点击空白处重试");
+        errorView.setTextSize(20);
         errorView.setTextColor(ContextCompat.getColor(context, android.R.color.black));
         ProgressBar progressBar = new ProgressBar(context, null, android.R.attr.progressBarStyleLarge);
         netStateView.setErrorView(errorView)
