@@ -6,9 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 /**
- * @author hsh
- * @time 2017/6/16 016 下午 05:27.
- * @doc 网络状态视图构造器
+ * 2017/6/16 016 下午 05:27.
+ * 网络状态视图构造器
  */
 public class NetStateViewBuilder {
 

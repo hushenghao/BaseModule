@@ -11,9 +11,7 @@ import com.dede.basemodule.view.NetStateView;
 import butterknife.BindView;
 
 /**
- * @author hsh
- * @time 2017/6/16 016 下午 02:41.
- * @doc
+ * 2017/6/16 016 下午 02:41.
  */
 public class ChildViewActivity extends TitleActivity {
 

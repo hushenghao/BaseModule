@@ -14,9 +14,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 
 /**
- * @author hsh
- * @time 2017/6/7 007 下午 05:05.
- * @doc
+ * 2017/6/7 007 下午 05:05.
  */
 public class TestFragment extends AppFragment {
 

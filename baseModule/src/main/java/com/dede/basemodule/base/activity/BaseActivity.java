@@ -15,14 +15,14 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.dede.basemodule.util.ExitUtil;
 import com.dede.basemodule.view.NetStateView;
 
 import butterknife.ButterKnife;
 
 /**
- * @author hsh
- * @time 2017/6/7 007 下午 02:52.
- * @doc 实现了不同视图的切换逻辑Activity
+ * 2017/6/7 007 下午 02:52.
+ * 实现了不同视图的切换逻辑Activity
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -56,8 +56,8 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 获取布局资源ID
      *
      * @return 布局资源id
-     * @author hsh
-     * @time 2017/6/7 007 下午 02:04
+     * <p>
+     * 2017/6/7 007 下午 02:04
      */
     @LayoutRes
     protected abstract int getLayoutId();
@@ -65,40 +65,36 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 初始化视图
      *
-     * @param savedInstanceState
-     * @author hsh
-     * @time 2017/6/7 007 下午 02:04
+     * @param savedInstanceState 2017/6/7 007 下午 02:04
      */
     protected abstract void initView(Bundle savedInstanceState);
 
     /**
      * 加载数据
      * 有些静态页面不需要加载数据，所以子类选择重写
-     *
-     * @author hsh
-     * @time 2017/6/7 007 下午 02:03
+     * <p>
+     * <p>
+     * 2017/6/7 007 下午 02:03
      */
     public void initData() {
     }
 
     /**
      * 初始化状态栏，状态栏背景颜色，是否显示等操作
-     *
-     * @author hsh
-     * @time 2017/6/7 007 下午 03:22
+     * <p>
+     * <p>
+     * 2017/6/7 007 下午 03:22
      */
-    protected void initStatusBar(){
+    protected void initStatusBar() {
     }
 
     /**
      * 初始化标题栏，需要将标题添加到baseView内
      *
      * @param baseView 标题栏容器
-     * @param context
-     * @author hsh
-     * @time 2017/6/7 007 下午 03:24
+     * @param context  2017/6/7 007 下午 03:24
      */
-    protected void initTitleBar(Context context, @Nullable LinearLayout baseView){
+    protected void initTitleBar(Context context, @Nullable LinearLayout baseView) {
     }
 
     private void initBaseView() {
@@ -152,9 +148,9 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     /**
      * BaseView创建完成时调用，在setContentView之前调用
-     *
-     * @author hsh
-     * @time 2017/6/12 012 上午 11:16
+     * <p>
+     * <p>
+     * 2017/6/12 012 上午 11:16
      */
     protected void onBaseViewCreate() {
     }
@@ -165,8 +161,8 @@ public abstract class BaseActivity extends AppCompatActivity {
      *
      * @param context
      * @return NetStateView
-     * @author hsh
-     * @time 2017/6/8 008 上午 11:03
+     * <p>
+     * 2017/6/8 008 上午 11:03
      */
     protected NetStateView onCreateNetStateView(Context context) {
         return null;
@@ -177,8 +173,8 @@ public abstract class BaseActivity extends AppCompatActivity {
      *
      * @param layoutId 资源id
      * @return View
-     * @author hsh
-     * @time 2017/6/7 007 下午 06:57
+     * <p>
+     * 2017/6/7 007 下午 06:57
      */
     private View onCreateContentView(@LayoutRes int layoutId) {
         return layoutInflater.inflate(layoutId, null, true);
@@ -189,6 +185,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(BASE_TAG, "onCreate: " + className);
+        ExitUtil.addActivity(this);
         context = this;
         applicationContext = getApplicationContext();
         layoutInflater = getLayoutInflater();
@@ -232,12 +229,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void finish() {
         super.finish();
         Log.d(BASE_TAG, "finish: " + className);
+        ExitUtil.removeActivity(this);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         Log.d(BASE_TAG, "onDestroy: " + className);
+        ExitUtil.removeActivity(this);
     }
 
 }

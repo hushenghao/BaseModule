@@ -5,11 +5,9 @@ import android.content.Context;
 import com.dede.basemodule.view.NetStateView;
 
 /**
- * @author hsh
- * @time 2017/6/12 012 上午 11:26.
- * @doc
+ * 2017/6/12 012 上午 11:26.
  */
-public abstract class AppFragment extends BaseFragment{
+public abstract class AppFragment extends BaseFragment {
 
     @Override
     protected NetStateView onCreateNetStateView(Context context) {

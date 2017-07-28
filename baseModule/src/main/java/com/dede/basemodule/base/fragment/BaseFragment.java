@@ -21,9 +21,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
- * @author hsh
- * @time 2017/6/7 007 下午 04:51.
- * @doc
+ * 2017/6/7 007 下午 04:51.
  */
 public abstract class BaseFragment extends Fragment {
 
@@ -103,8 +101,8 @@ public abstract class BaseFragment extends Fragment {
      * 获取布局资源ID
      *
      * @return 布局资源id
-     * @author hsh
-     * @time 2017/6/7 007 下午 02:04
+     * <p>
+     * 2017/6/7 007 下午 02:04
      */
     @LayoutRes
     protected abstract int getLayoutId();
@@ -113,17 +111,17 @@ public abstract class BaseFragment extends Fragment {
      * 初始化视图
      *
      * @param rootView 根据资源id填充完成后的视图
-     * @author hsh
-     * @time 2017/6/7 007 下午 02:04
+     *                 <p>
+     *                 2017/6/7 007 下午 02:04
      */
     protected abstract void initView(View rootView);
 
     /**
      * 加载数据
      * 有些静态页面不需要加载数据，所以子类选择重写
-     *
-     * @author hsh
-     * @time 2017/6/7 007 下午 02:03
+     * <p>
+     * <p>
+     * 2017/6/7 007 下午 02:03
      */
     protected void initData() {
     }
@@ -133,9 +131,7 @@ public abstract class BaseFragment extends Fragment {
      * 创建网络状态切换视图
      *
      * @param context
-     * @return
-     * @author hsh
-     * @time 2017/6/8 008 上午 11:03
+     * @return 2017/6/8 008 上午 11:03
      */
     protected NetStateView onCreateNetStateView(Context context) {
         return null;
@@ -146,8 +142,8 @@ public abstract class BaseFragment extends Fragment {
      *
      * @param layoutId 资源id
      * @return View
-     * @author hsh
-     * @time 2017/6/7 007 下午 06:57
+     * <p>
+     * 2017/6/7 007 下午 06:57
      */
     private View onCreateContentView(@LayoutRes int layoutId) {
         View contentView = layoutInflater.inflate(layoutId, null, true);

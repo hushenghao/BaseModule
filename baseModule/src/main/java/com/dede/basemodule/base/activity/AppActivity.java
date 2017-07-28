@@ -12,9 +12,8 @@ import com.dede.basemodule.view.NetStateView;
 import com.dede.basemodule.view.NetStateViewBuilder;
 
 /**
- * @author hsh
- * @time 2017/6/9 009 下午 02:01.
- * @doc 实现了不同视图的Activity
+ * 2017/6/9 009 下午 02:01.
+ * 实现了不同视图的Activity
  */
 public abstract class AppActivity extends TitleActivity {
 

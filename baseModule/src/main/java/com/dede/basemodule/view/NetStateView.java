@@ -21,12 +21,11 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 /**
- * @author hsh
- * @time 2017/6/8 008 上午 10:42.
- * @doc 封装了不同视图的FrameLayout
+ * 2017/6/8 008 上午 10:42.
+ * 封装了不同视图的FrameLayout
  * <p>
  * 可以直接在布局中引入
- * <com.che300.basemodule.view.NetStateView
+ * &lt;com.che300.basemodule.view.NetStateView
  * xmlns:android="http://schemas.android.com/apk/res/android"
  * xmlns:app="http://schemas.android.com/apk/res-auto"
  * android:id="@+id/net_state_view"
@@ -35,35 +34,35 @@ import java.lang.annotation.RetentionPolicy;
  * android:visibility="gone"
  * app:layout_empty="@layout/layout_empty"//空视图
  * app:layout_error="@layout/layout_error"//错误视图
- * app:layout_loading="@layout/layout_loading"/>//加载中视图
+ * app:layout_loading="@layout/layout_loading"/&gt;//加载中视图
  * <p>
  * <p>
  * <p>
  * 可以直接添加子View，子View数量必须为3，且必须设置指定tag
- * <com.che300.basemodule.view.NetStateView
+ * &lt;com.che300.basemodule.view.NetStateView
  * android:id="@+id/net_state_view"
  * android:layout_width="match_parent"
- * android:layout_height="match_parent">
+ * android:layout_height="match_parent"&gt;
  * <p>
- * <TextView
+ * &lt;TextView
  * android:layout_width="wrap_content"
  * android:layout_height="wrap_content"
  * android:tag="@string/loading_view"
- * android:text="我是加载中视图"/>
+ * android:text="我是加载中视图"/&gt;
  * <p>
- * <TextView
+ * &lt;TextView
  * android:layout_width="wrap_content"
  * android:layout_height="wrap_content"
  * android:tag="@string/empty_view"
- * android:text="我是空视图"/>
+ * android:text="我是空视图"/&gt;
  * <p>
- * <TextView
+ * &lt;TextView
  * android:layout_width="wrap_content"
  * android:layout_height="wrap_content"
  * android:tag="@string/error_view"
- * android:text="我是错误视图"/>
+ * android:text="我是错误视图"/&gt;
  * <p>
- * </com.che300.basemodule.view.NetStateView>
+ * &lt;/com.che300.basemodule.view.NetStateView&gt;
  */
 public class NetStateView extends FrameLayout implements View.OnClickListener, View.OnKeyListener {
 
@@ -199,8 +198,8 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
      * 设置视图显示状态
      *
      * @param state ViewState
-     * @author hsh
-     * @time 2017/6/9 009 下午 01:38
+     *              <p>
+     *              2017/6/9 009 下午 01:38
      */
     private void showViewByState(@ViewState int state) {
         if (viewState == state && !addViewTag) {
@@ -272,8 +271,8 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
          * 点击错误视图的回调方法
          *
          * @param errorView 错误视图
-         * @author hsh
-         * @time 2017/6/12 012 上午 09:43
+         *                  <p>
+         *                  2017/6/12 012 上午 09:43
          */
         public void onErrorViewClick(View errorView) {
         }
@@ -282,8 +281,8 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
          * 点击错误视图空白处的回调
          *
          * @param errorView 错误视图
-         * @author hsh
-         * @time 2017/6/12 012 上午 09:44
+         *                  <p>
+         *                  2017/6/12 012 上午 09:44
          */
         public void onBlankClick(View errorView) {
         }
@@ -295,9 +294,7 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
      *
      * @param emptyView 空视图
      * @param add       是否添加到当前容器内
-     * @return
-     * @author hsh
-     * @time 2017/6/16 016 下午 04:30
+     * @return 2017/6/16 016 下午 04:30
      */
     private void setEmptyView(@NonNull View emptyView, boolean add) {
         if (this.emptyView != null)
@@ -312,8 +309,8 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
      *
      * @param errorView 错误视图
      * @param add       是否添加到容器中
-     * @author hsh
-     * @time 2017/6/16 016 下午 04:29
+     *                  <p>
+     *                  2017/6/16 016 下午 04:29
      */
     private void setErrorView(@NonNull View errorView, boolean add) {
         if (this.errorView != null)
@@ -332,9 +329,7 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
      *
      * @param loadingView 记载中视图
      * @param add         是否添加到容器中
-     * @return
-     * @author hsh
-     * @time 2017/6/16 016 下午 04:31
+     * @return 2017/6/16 016 下午 04:31
      */
     private void setLoadingView(@NonNull View loadingView, boolean add) {
         if (this.loadingView != null)
@@ -358,8 +353,8 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
      * 如果需要自定义错误视图，此方法必须在setErrorView()后调用
      *
      * @param onRetryClickListener 重试点击监听
-     * @author hsh
-     * @time 2017/6/8 008 下午 05:27
+     *                             <p>
+     *                             2017/6/8 008 下午 05:27
      */
     public NetStateView setOnRetryClickListener(OnRetryClickListener onRetryClickListener) {
         this.onRetryClickListener = onRetryClickListener;
@@ -370,8 +365,8 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
      * 是否拦截触摸事件
      *
      * @param dispatchEvent true 拦截， false 不拦截。默认为true
-     * @author hsh
-     * @time 2017/6/9 009 下午 01:39
+     *                      <p>
+     *                      2017/6/9 009 下午 01:39
      */
     public NetStateView setDispatchEvent(boolean dispatchEvent) {
         this.dispatchEvent = dispatchEvent;
@@ -382,8 +377,8 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
      * 加载中视图是否可以被取消
      *
      * @param cancelable true 可以被取消，false 不可取消 ，默认为false
-     * @author hsh
-     * @time 2017/6/9 009 下午 01:40
+     *                   <p>
+     *                   2017/6/9 009 下午 01:40
      */
     public NetStateView setLoadingCancelable(boolean cancelable) {
         this.cancelable = cancelable;
@@ -394,8 +389,8 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
      * 获取视图显示状态
      *
      * @return viewState
-     * @author hsh
-     * @time 2017/6/9 009 下午 01:41
+     * <p>
+     * 2017/6/9 009 下午 01:41
      */
     @ViewState
     public int getViewState() {

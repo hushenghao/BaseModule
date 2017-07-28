@@ -14,7 +14,7 @@ import com.dede.basemodule.util.DensityUtils;
 
 /**
  * @author gengqiqauan
- * @time 2015年4月24日
+ *  2015年4月24日
  */
 public class TabTitleBar extends RelativeLayout {
     private ImageView imgleft;

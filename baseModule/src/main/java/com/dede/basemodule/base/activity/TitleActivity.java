@@ -13,9 +13,8 @@ import com.dede.basemodule.util.DensityUtils;
 import com.dede.basemodule.view.TabTitleBar;
 
 /**
- * @author hsh
- * @time 2017/6/7 007 下午 02:52.
- * @doc 实现了Title和状态栏样式的Activity
+ * 2017/6/7 007 下午 02:52.
+ * 实现了Title和状态栏样式的Activity
  */
 public abstract class TitleActivity extends BaseActivity {
 
