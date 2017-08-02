@@ -22,6 +22,10 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.jakewharton:butterknife:8.6.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
+    compile "io.reactivex.rxjava2:rxandroid:2.0.1"
+    compile "io.reactivex.rxjava2:rxjava:2.1.0"
+    compile "com.trello.rxlifecycle2:rxlifecycle:2.1.0"
+    compile "com.trello.rxlifecycle2:rxlifecycle-components:2.1.0"
 }
 
 apply plugin: 'com.jfrog.bintray'
@@ -30,7 +34,7 @@ apply plugin: 'com.github.dcendents.android-maven'
 def siteUrl = 'https://github.com/hushenghao/BaseModule'
 def gitUrl = 'https://github.com/hushenghao/BaseModule.git'
 
-version = "1.0.0"
+version = "1.0.1"
 group = "com.dede.basemodule"
 
 install {

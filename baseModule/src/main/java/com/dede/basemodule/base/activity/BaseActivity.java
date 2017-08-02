@@ -28,7 +28,6 @@ import butterknife.ButterKnife;
 
 /**
  * 2017/6/7 007 下午 02:52.
- * 实现了不同视图的切换逻辑Activity
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
