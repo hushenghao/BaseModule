@@ -1,4 +1,4 @@
-package com.dede.basemodule.base.activity;
+package com.dede.basetest;
 
 import android.content.Context;
 import android.view.Gravity;
@@ -8,14 +8,15 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.dede.basemodule.base.activity.BaseActivity;
 import com.dede.basemodule.view.NetStateView;
 import com.dede.basemodule.view.NetStateViewBuilder;
 
 /**
  * 2017/6/9 009 下午 02:01.
- * 实现了不同视图的Activity
+ * 实现了自定义不同视图的Activity
  */
-public abstract class AppActivity extends TitleActivity {
+public abstract class AppActivity extends BaseActivity {
 
     private TextView loadingText;
 
@@ -44,7 +45,7 @@ public abstract class AppActivity extends TitleActivity {
     }
 
     public void showLoading() {
-        netStateView.showLoading();
+        mNetStateView.showLoading();
     }
 
     public void showLoading(String msg) {
@@ -53,14 +54,14 @@ public abstract class AppActivity extends TitleActivity {
     }
 
     public void hideLoading() {
-        netStateView.hideLoading();
+        mNetStateView.hideLoading();
     }
 
     public void showError() {
-        netStateView.showError();
+        mNetStateView.showError();
     }
 
     public void showEmpty() {
-        netStateView.showEmpty();
+        mNetStateView.showEmpty();
     }
 }

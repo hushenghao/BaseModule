@@ -198,8 +198,6 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
      * 设置视图显示状态
      *
      * @param state ViewState
-     *              <p>
-     *              2017/6/9 009 下午 01:38
      */
     private void showViewByState(@ViewState int state) {
         if (viewState == state && !addViewTag) {
@@ -271,8 +269,6 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
          * 点击错误视图的回调方法
          *
          * @param errorView 错误视图
-         *                  <p>
-         *                  2017/6/12 012 上午 09:43
          */
         public void onErrorViewClick(View errorView) {
         }
@@ -281,8 +277,6 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
          * 点击错误视图空白处的回调
          *
          * @param errorView 错误视图
-         *                  <p>
-         *                  2017/6/12 012 上午 09:44
          */
         public void onBlankClick(View errorView) {
         }
@@ -294,7 +288,6 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
      *
      * @param emptyView 空视图
      * @param add       是否添加到当前容器内
-     * @return 2017/6/16 016 下午 04:30
      */
     private void setEmptyView(@NonNull View emptyView, boolean add) {
         if (this.emptyView != null)
@@ -309,8 +302,6 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
      *
      * @param errorView 错误视图
      * @param add       是否添加到容器中
-     *                  <p>
-     *                  2017/6/16 016 下午 04:29
      */
     private void setErrorView(@NonNull View errorView, boolean add) {
         if (this.errorView != null)
@@ -329,7 +320,6 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
      *
      * @param loadingView 记载中视图
      * @param add         是否添加到容器中
-     * @return 2017/6/16 016 下午 04:31
      */
     private void setLoadingView(@NonNull View loadingView, boolean add) {
         if (this.loadingView != null)
@@ -353,8 +343,6 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
      * 如果需要自定义错误视图，此方法必须在setErrorView()后调用
      *
      * @param onRetryClickListener 重试点击监听
-     *                             <p>
-     *                             2017/6/8 008 下午 05:27
      */
     public NetStateView setOnRetryClickListener(OnRetryClickListener onRetryClickListener) {
         this.onRetryClickListener = onRetryClickListener;
@@ -365,8 +353,6 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
      * 是否拦截触摸事件
      *
      * @param dispatchEvent true 拦截， false 不拦截。默认为true
-     *                      <p>
-     *                      2017/6/9 009 下午 01:39
      */
     public NetStateView setDispatchEvent(boolean dispatchEvent) {
         this.dispatchEvent = dispatchEvent;
@@ -377,8 +363,6 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
      * 加载中视图是否可以被取消
      *
      * @param cancelable true 可以被取消，false 不可取消 ，默认为false
-     *                   <p>
-     *                   2017/6/9 009 下午 01:40
      */
     public NetStateView setLoadingCancelable(boolean cancelable) {
         this.cancelable = cancelable;
@@ -389,8 +373,6 @@ public class NetStateView extends FrameLayout implements View.OnClickListener, V
      * 获取视图显示状态
      *
      * @return viewState
-     * <p>
-     * 2017/6/9 009 下午 01:41
      */
     @ViewState
     public int getViewState() {

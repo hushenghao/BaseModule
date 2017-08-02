@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.dede.basemodule.base.fragment.AppFragment;
 import com.dede.basemodule.view.NetStateView;
 
 import java.util.ArrayList;
@@ -47,19 +46,19 @@ public class TestFragment extends AppFragment {
 
     @Override
     protected void initData() {
-        netStateView.showLoading();//加载中视图
+        mNetStateView.showLoading();//加载中视图
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 if (isFirst) {
                     isFirst = false;
-                    netStateView.showError();//错误视图
+                    mNetStateView.showError();//错误视图
                 } else {
-                    netStateView.showEmpty();//空视图
+                    mNetStateView.showEmpty();//空视图
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            netStateView.hideLoading();
+                            mNetStateView.hideLoading();
                             bindData();//成功视图
                         }
                     }, 1000);
@@ -73,6 +72,6 @@ public class TestFragment extends AppFragment {
         for (int i = 0; i < 30; i++) {
             data.add(getClass().getName() + "  " + i);
         }
-        listView.setAdapter(new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, data));
+        listView.setAdapter(new ArrayAdapter<>(mContext, android.R.layout.simple_list_item_1, data));
     }
 }

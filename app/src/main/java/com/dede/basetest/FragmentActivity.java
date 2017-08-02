@@ -3,9 +3,9 @@ package com.dede.basetest;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 
-import com.dede.basemodule.base.activity.TitleActivity;
+import com.dede.basemodule.base.activity.BaseActivity;
 
-public class FragmentActivity extends TitleActivity {
+public class FragmentActivity extends BaseActivity {
 
     @Override
     protected int getLayoutId() {
@@ -14,7 +14,7 @@ public class FragmentActivity extends TitleActivity {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-        tabTitleBar.setTitle(getClass().getSimpleName());
+        mTabTitleBar.setTitle(getClass().getSimpleName());
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.root_view, new TestFragment());
         transaction.commit();

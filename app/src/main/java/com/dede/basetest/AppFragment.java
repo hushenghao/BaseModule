@@ -1,7 +1,8 @@
-package com.dede.basemodule.base.fragment;
+package com.dede.basetest;
 
 import android.content.Context;
 
+import com.dede.basemodule.base.fragment.BaseFragment;
 import com.dede.basemodule.view.NetStateView;
 
 /**

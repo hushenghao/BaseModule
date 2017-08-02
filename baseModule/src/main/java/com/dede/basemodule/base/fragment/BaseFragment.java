@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -32,15 +33,15 @@ public abstract class BaseFragment extends Fragment {
     private String className = getClass().getName();
 
 
-    protected Context context;
-    protected Context applicationContext;
+    protected Context mContext;
+    protected FragmentActivity mActivity;
     protected LayoutInflater layoutInflater;
 
-    private FrameLayout rootView;//根布局，如果没有网络状态视图则为null
+    private FrameLayout mRootView;//根布局，如果没有网络状态视图则为null
 
-    public View contentView;//content
+    public View mContentView;//content
 
-    public NetStateView netStateView;
+    public NetStateView mNetStateView;
 
     private Unbinder unbinder;
 
@@ -48,8 +49,8 @@ public abstract class BaseFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         Log.d(BASE_TAG, "onAttach: " + className);
-        this.context = context;
-        applicationContext = context.getApplicationContext();
+        this.mContext = context;
+        mActivity = getActivity();
     }
 
     @Override
@@ -65,37 +66,45 @@ public abstract class BaseFragment extends Fragment {
         layoutInflater = inflater;
 
         //网络状态视图
-        netStateView = onCreateNetStateView(context);
-        if (netStateView != null) {
+        mNetStateView = onCreateNetStateView(mContext);
+        if (mNetStateView != null) {
             //内容容器
-            rootView = new FrameLayout(context);
+            mRootView = new FrameLayout(mContext);
 
             //主界面
             int layoutId = getLayoutId();
-            contentView = onCreateContentView(layoutId);
+            mContentView = onCreateContentView(layoutId);
             FrameLayout.LayoutParams contentParams = new FrameLayout.LayoutParams(
                     FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
-            rootView.addView(contentView, contentParams);
+            mRootView.addView(mContentView, contentParams);
 
             FrameLayout.LayoutParams loadingParams = new FrameLayout.LayoutParams(
                     FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
             loadingParams.gravity = Gravity.CENTER;
-            rootView.addView(netStateView, loadingParams);
+            mRootView.addView(mNetStateView, loadingParams);
         } else {//没有网络状态视图时直接返回，减少嵌套层级
             int layoutId = getLayoutId();
-            contentView = onCreateContentView(layoutId);
+            mContentView = onCreateContentView(layoutId);
         }
 
-        initView(contentView);
+        initView(mContentView);
 
-        initData();
+        if (getUserVisibleHint())
+            initData();
 
-        if (netStateView != null)
-            return rootView;
+        if (mNetStateView != null)
+            return mRootView;
         else
-            return contentView;
+            return mContentView;
     }
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser && isVisible()) {
+            initData();
+        }
+    }
 
     /**
      * 获取布局资源ID
@@ -151,17 +160,39 @@ public abstract class BaseFragment extends Fragment {
         return contentView;
     }
 
+    public void showLoading() {
+        if (mNetStateView == null)
+            return;
+        mNetStateView.showLoading();
+    }
+
+    public void hideLoading() {
+        if (mNetStateView == null)
+            return;
+        mNetStateView.hideLoading();
+    }
+
+    public void showError() {
+        if (mNetStateView == null)
+            return;
+        mNetStateView.showError();
+    }
+
+    public void showEmpty() {
+        if (mNetStateView == null)
+            return;
+        mNetStateView.showEmpty();
+    }
 
     @NonNull
     public void toast(@NonNull String msg) {
-        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+        Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
     }
 
     @NonNull
     public void toast(@StringRes int res) {
         toast(getResources().getString(res));
     }
-
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {

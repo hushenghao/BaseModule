@@ -11,12 +11,12 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.dede.basemodule.base.activity.TitleActivity;
+import com.dede.basemodule.base.activity.BaseActivity;
 import com.dede.basemodule.view.NetStateView;
 
 import butterknife.BindView;
 
-public class MainActivity extends TitleActivity {
+public class MainActivity extends BaseActivity {
 
     @BindView(R.id.net_state_view)
     NetStateView netStateView;
@@ -36,13 +36,13 @@ public class MainActivity extends TitleActivity {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-        tabTitleBar.setTitle(getClass().getSimpleName());
+        mTabTitleBar.setTitle(getClass().getSimpleName());
 
         TextView errorView = new TextView(this);
         errorView.setText("点击空白处重试");
         errorView.setTextSize(20);
-        errorView.setTextColor(ContextCompat.getColor(context, android.R.color.black));
-        ProgressBar progressBar = new ProgressBar(context, null, android.R.attr.progressBarStyleLarge);
+        errorView.setTextColor(ContextCompat.getColor(mContext, android.R.color.black));
+        ProgressBar progressBar = new ProgressBar(mContext, null, android.R.attr.progressBarStyleLarge);
         netStateView.setErrorView(errorView)
                 .setOnRetryClickListener(new NetStateView.OnRetryClickListener() {
                     @Override

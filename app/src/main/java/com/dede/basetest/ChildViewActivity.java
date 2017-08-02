@@ -5,7 +5,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 
-import com.dede.basemodule.base.activity.TitleActivity;
+import com.dede.basemodule.base.activity.BaseActivity;
 import com.dede.basemodule.view.NetStateView;
 
 import butterknife.BindView;
@@ -13,7 +13,7 @@ import butterknife.BindView;
 /**
  * 2017/6/16 016 下午 02:41.
  */
-public class ChildViewActivity extends TitleActivity {
+public class ChildViewActivity extends BaseActivity {
 
     @BindView(R.id.net_state_view)
     NetStateView netStateView;

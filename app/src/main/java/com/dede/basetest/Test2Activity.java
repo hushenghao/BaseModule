@@ -5,15 +5,13 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 
-import com.dede.basemodule.base.activity.AppActivity;
-
 public class Test2Activity extends AppActivity {
 
     Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            netStateView.showSuccess();
+            mNetStateView.showSuccess();
         }
     };
 
@@ -24,7 +22,7 @@ public class Test2Activity extends AppActivity {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-        tabTitleBar.setTitle(getClass().getSimpleName());
+        mTabTitleBar.setTitle(getClass().getSimpleName());
     }
 
 

@@ -6,8 +6,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.dede.basemodule.base.activity.AppActivity;
-
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -24,7 +22,7 @@ public class Test1Activity extends AppActivity {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-        tabTitleBar.setTitle(getClass().getSimpleName());
+        mTabTitleBar.setTitle(getClass().getSimpleName());
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -32,8 +30,8 @@ public class Test1Activity extends AppActivity {
             }
         });
         bindData();
-        netStateView.setLoadingCancelable(true);
-        netStateView.showLoading();
+        mNetStateView.setLoadingCancelable(true);
+        mNetStateView.showLoading();
     }
 
     private void bindData() {
@@ -41,7 +39,7 @@ public class Test1Activity extends AppActivity {
         for (int i = 0; i < 30; i++) {
             data.add(getClass().getName() + "  " + i);
         }
-        listView.setAdapter(new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, data));
+        listView.setAdapter(new ArrayAdapter<>(mContext, android.R.layout.simple_list_item_1, data));
     }
 
 }
